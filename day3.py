@@ -61,26 +61,32 @@
 #     print("hello students")
 # greeting()
 
-def add():
-     return 10 + 20 
-result = add()
-print(result)
+# def add():
+#      return 10 + 20 
+# result = add()
+# print(result)
 
 
-def sub() :
-     return 10 -20
-result = sub()
-print(result)
+# def sub() :
+#      return 10 -20
+# result = sub()
+# print(result)
 
-def mul() :
-     return 10 * 2
-result = mul()
-print(result)
+# def mul() :
+#      return 10 * 2
+# result = mul()
+# print(result)
+
+
+# c
+
+###############*args########################3
+def add(a,b):
+    print(a,b)
+add(10,20)
 
 
 def div() :
-     return 10 / 5
+     return a  / b
 result = div()
 print(result)
-
-
