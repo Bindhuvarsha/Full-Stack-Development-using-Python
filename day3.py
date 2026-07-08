@@ -158,3 +158,27 @@
 # sham = lambda text:len(text)
 # print(sham("ram charan"))
  
+
+##############file handling#####################    txt:transfer textfile
+
+
+file = open("student.txt","w" )
+file.write("Hello")
+file.close()
+
+print("data written successfully")
+
+file = open("student.txt","r" )
+data = file.read()
+print(data)
+file.close()
+
+file = open("student.txt","a")
+file.write("\n uta thindha dinga")
+file.close()
+
+print("data append successfully")
+
+file = open("student.txt","r")
+print(file.read())
+file.close()
