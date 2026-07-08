@@ -152,8 +152,9 @@
 # print(upper_case("raj"))
 
 
-sham = lambda name:name.upper()
-print(sham("ram charan"))
+# sham = lambda name:name.upper()
+# print(sham("ram charan"))
 
-sham = lambda text:len(text)
-print(sham("ram charan"))
+# sham = lambda text:len(text)
+# print(sham("ram charan"))
+ 
