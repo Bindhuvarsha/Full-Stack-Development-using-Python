@@ -81,15 +81,47 @@
 # c
 
 ###############*args########################3
-def add(a,b):
-    print(a,b)
-add(10,20)
+# def add(a,b):
+#     print(a,b)
+# add(10,20)
+
+# def add(a,b):
+#     print(a+b)
+# add(10,2)
+# def multiply(a,b):
+#     print(a*b)
+# multiply(10,2)
+# def div(a,b):
+#     print(a/b)
+# div(10,2)
+# def sub(a,b):
+#     print(a-b)
+# sub(10,2)
+
+# def usha(*numders):
+#    print(numders)
+# usha(10,20,30,40,50)
+
+# def add(*num):
+#     total=0
+#     for i in num:
+#         total += i
+#     print(total)
+# add(10,20,30,40,50)
+
+#############kwargs################
+
+# def student(**details):
+#     print("name :",details["name"])
+#     print("age :",details["age"])
+#     print("job :",details["job"])
+# student(
+#     name="penga",
+#     age=22,
+#     job="sales",
+# )
 
 
-def div() :
-     return a  / b
-result = div()
-print(result)
-
-
-
+def square(x):
+    return x * x
+print(square(16))
