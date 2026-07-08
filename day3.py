@@ -90,3 +90,6 @@ def div() :
      return a  / b
 result = div()
 print(result)
+
+
+
