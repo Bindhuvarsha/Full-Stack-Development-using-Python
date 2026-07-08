@@ -122,6 +122,38 @@
 # )
 
 
-def square(x):
-    return x * x
-print(square(16))
+# def square(x):         square fuction
+#     return x * x
+# print(square(16))
+
+# square = lambda x:x*x   #lambda function
+# print(square(25))
+
+# add = lambda a,b:a+b
+# print(add(10,20))
+
+# add = lambda a,b:a*b
+# print(add(10,20))
+
+# dd = lambda a,b:a-b
+# print(add(10,20))
+
+# dd = lambda a,b:a/b
+# print(add(10,20))
+
+# even = lambda n: "Even" if n % 2 == 0 else "Odd"
+
+# print(even(1))
+# print(even(4))
+
+# lower_case=lambda n :n.lower()
+# upper_case=lambda n :n.upper()
+# print(lower_case("RAM"))
+# print(upper_case("raj"))
+
+
+sham = lambda name:name.upper()
+print(sham("ram charan"))
+
+sham = lambda text:len(text)
+print(sham("ram charan"))
