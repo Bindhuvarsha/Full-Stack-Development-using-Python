@@ -33,7 +33,7 @@
 # ##############tuple slicing################    Tuple slicing in  allows you to extract a subset of elements from a tuple using start, stop, and step indices.
 # num = (10,20,30,40,50)
 # print(num[1:4])
-
+#########################
 
 
 
