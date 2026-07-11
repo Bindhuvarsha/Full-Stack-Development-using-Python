@@ -46,3 +46,55 @@ class employee:
 emp = employee()
 emp.set_salary(52836)
 print(emp.get_salary())
+
+
+#########################polymorphism#################################
+#polymorphism means the same method name can perform a different action depending on the object
+
+class dog :
+    def sound(self) :
+        print("dog barks")
+class cat :
+    def sound(self) :
+        print("cat meows")
+Dog = dog()
+Cat = cat()
+
+Dog.sound()
+Cat.sound()
+
+class Bank:
+    def credited(self):
+        print("Credited")
+
+
+class Amount:
+    def debited(self):
+        print("Debited")
+
+
+bank = Bank()
+amount = Amount()
+
+bank.credited()
+amount.debited()
+
+
+class PhonePe:
+    def pay(self):
+        print("Payment successful")
+
+
+class GooglePay:
+    def pay(self):
+        print("Payment successful ")
+
+
+phonepe = PhonePe()
+googlepay = GooglePay()
+
+phonepe.pay()
+googlepay.pay()
+
+
+#################abstraction-means hiding internal implementation and showing only the neccessary features to the user
