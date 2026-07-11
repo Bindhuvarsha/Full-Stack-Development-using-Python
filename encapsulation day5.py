@@ -28,3 +28,21 @@ class employee :
         return self.__salary
 emp = employee(52836)
 print(emp.get_salary())
+
+
+
+#########setter#######
+class employee:
+    def __init__(self):
+        self.__salary = 0
+    def set_salary(self,amount):
+        if amount > 0 :
+            self.__salary = amount
+        else:
+            print("invalid salary")
+
+    def get_salary(self) :
+        return self.__salary
+emp = employee()
+emp.set_salary(52836)
+print(emp.get_salary())
