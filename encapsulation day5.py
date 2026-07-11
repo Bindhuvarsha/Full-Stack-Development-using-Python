@@ -108,3 +108,33 @@ class car(vehicle):
         print("car started")
 car = car()
 car.start()
+
+
+
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def start(self):
+        pass
+
+class Lion(Animal):
+    def start(self):
+        print("roaring")
+
+class Dog(Animal):
+    def start(self):
+        print("barking")
+
+class Rabbit(Animal):
+    def start(self):
+        print("running")
+
+lion= Lion()
+lion.start()
+
+dog = Dog()
+dog.start()
+
+rabbit = Rabbit()
+rabbit.start()
