@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ book.title }}
+{% endblock %}
+
+{% block content %}
+
+<a class="btn" href="{% url 'book_list' %}">
+    ← Back to Library
+</a>
+
+<br><br>
+
+<div class="book-details">
+
+    <div class="book-cover">
+
+        {% if book.cover %}
+            <img src="{{ book.cover.url }}" alt="{{ book.title }}">
+        {% else %}
+            <img src="https://via.placeholder.com/300x420?text=No+Cover" alt="No Cover">
+        {% endif %}
+
+    </div>
+
+    <div class="book-content">
+
+        <h1>{{ book.title }}</h1>
+
+        <p>
+            <strong>Author:</strong>
+            {{ book.author }}
+        </p>
+
+        <p>
+            <strong>Added By:</strong>
+            {{ book.added_by.username }}
+        </p>
+
+        {% if avg_rating %}
+            <div class="rating-box">
+                ⭐ {{ avg_rating|floatformat:1 }} / 5
+            </div>
+        {% else %}
+            <div class="rating-box">
+                ☆ No Ratings Yet
+            </div>
+        {% endif %}
+
+        {% if book.description %}
+        <div class="description">
+
+            <h3>Description</h3>
+
+            <p>
+                {{ book.description }}
+            </p>
+
+        </div>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            <br>
+
+            <a class="btn" href="{% url 'add_review' book.pk %}">
+                <i class="fa-solid fa-pen"></i>
+                Write Review
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<hr>
+
+<h2>Reviews ({{ reviews|length }})</h2>
+
+{% if reviews %}
+
+    {% for review in reviews %}
+
+    <div class="review-card">
+
+        <div class="review-header">
+
+            <strong>
+                <i class="fa-solid fa-user"></i>
+                {{ review.user.username }}
+            </strong>
+
+            <span class="stars">
+                ⭐ {{ review.rating }}/5
+            </span>
+
+        </div>
+
+        <p>
+            {{ review.comment }}
+        </p>
+
+        <small>
+            {{ review.created_at|date:"d M Y" }}
+        </small>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+<div class="empty-books">
+
+    <h3>No Reviews Yet</h3>
+
+    <p>Be the first to review this book.</p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

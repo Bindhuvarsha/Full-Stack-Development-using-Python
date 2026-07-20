@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Write a Review{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <div class="form-card">
+
+        <h1>⭐ Review This Book</h1>
+
+        <h2>{{ book.title }}</h2>
+
+        <p class="form-subtitle">
+            by <strong>{{ book.author }}</strong>
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- Rating -->
+            <div class="rating-box">
+
+                <label><strong>Rating</strong></label>
+
+                {{ form.rating }}
+
+            </div>
+
+            <!-- Comment -->
+            <div class="comment-box">
+
+                <label><strong>Your Review</strong></label>
+
+                {{ form.comment }}
+
+            </div>
+
+            <div class="form-buttons">
+
+                <button class="btn" type="submit">
+                    ⭐ Submit Review
+                </button>
+
+                <a href="{% url 'book_detail' book.pk %}" class="btn cancel-btn">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

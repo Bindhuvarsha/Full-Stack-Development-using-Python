@@ -19,3 +19,4 @@ class ReviewForm(forms.ModelForm):
                 "Rating must be between 1 and 5"
             )
         return rating
+    

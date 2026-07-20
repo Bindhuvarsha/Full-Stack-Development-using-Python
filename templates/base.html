@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}BookShelf{% endblock %}</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <a class="brand" href="{% url 'book_list' %}">
+            📚 <span>BookShelf</span>
+        </a>
+
+        <div class="nav-links">
+
+            {% if user.is_authenticated %}
+
+                <span class="welcome">
+                    <i class="fa-solid fa-user"></i>
+                    {{ user.username }}
+                </span>
+
+                <a href="{% url 'book_add' %}">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Book
+                </a>
+
+                <a href="{% url 'logout' %}">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'login' %}">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Login
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+    <!-- ================= CONTENT ================= -->
+
+    <main class="container">
+
+        {% if messages %}
+            <div class="messages">
+
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 BookShelf |
+            Built with ❤️ using Django
+        </p>
+
+    </footer>
+
+</body>
+</html>

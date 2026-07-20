@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}
+        Edit Book
+    {% else %}
+        Add Book
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <div class="form-card">
+
+        <h1>
+            {% if object %}
+                ✏️ Edit "{{ object.title }}"
+            {% else %}
+                📚 Add a New Book
+            {% endif %}
+        </h1>
+
+        <p class="form-subtitle">
+            Fill in the details below to save your book.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <!-- Image Preview -->
+            <div class="image-preview">
+                <img id="preview"
+                     src="#"
+                     alt="Cover Preview"
+                     style="display:none;">
+            </div>
+
+            <div class="form-buttons">
+
+                <button type="submit" class="btn">
+                    💾 Save Book
+                </button>
+
+                <a href="{% url 'book_list' %}" class="btn cancel-btn">
+                    ❌ Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+const imageInput = document.querySelector('input[type="file"]');
+const preview = document.getElementById("preview");
+
+if(imageInput){
+
+    imageInput.addEventListener("change", function(){
+
+        const file = this.files[0];
+
+        if(file){
+
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = "block";
+
+        }
+
+    });
+
+}
+
+</script>
+
+{% endblock %}

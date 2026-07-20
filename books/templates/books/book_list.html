@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}All Books{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <div>
+        <h1>📚 Book Library</h1>
+        <p>Discover, add and review your favourite books.</p>
+    </div>
+
+    {% if user.is_authenticated %}
+        <a class="btn" href="{% url 'book_add' %}">
+            <i class="fa-solid fa-plus"></i>
+            Add New Book
+        </a>
+    {% endif %}
+
+</div>
+
+<div class="search-box">
+
+    <form method="GET">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="🔍 Search books by title or author..."
+            value="{{ request.GET.q }}">
+
+        <button class="btn" type="submit">
+            Search
+        </button>
+
+    </form>
+
+</div>
+
+{% if books %}
+
+<div class="book-list">
+
+    {% for book in books %}
+
+    <div class="book-card">
+
+        {% if book.cover %}
+            <img src="{{ book.cover.url }}" alt="{{ book.title }}">
+        {% else %}
+            <img src="https://via.placeholder.com/250x350?text=No+Cover" alt="No Cover">
+        {% endif %}
+
+        <div class="book-info">
+
+            <h3>{{ book.title }}</h3>
+
+            <p>
+                <i class="fa-solid fa-user-pen"></i>
+                {{ book.author }}
+            </p>
+
+            {% if book.avg_rating %}
+                <p class="rating">
+                    ⭐ {{ book.avg_rating|floatformat:1 }}/5
+                </p>
+            {% else %}
+                <p class="rating">
+                    ☆ No reviews yet
+                </p>
+            {% endif %}
+
+            <a class="btn" href="{% url 'book_detail' book.pk %}">
+                View Details
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-books">
+
+    <h2>📖 No Books Available</h2>
+
+    <p>Add your first book to start your collection.</p>
+
+    {% if user.is_authenticated %}
+        <a class="btn" href="{% url 'book_add' %}">
+            Add First Book
+        </a>
+    {% endif %}
+
+</div>
+
+{% endif %}
+
+{% endblock %}
